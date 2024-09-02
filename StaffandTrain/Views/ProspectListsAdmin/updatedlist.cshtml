@@ -21,7 +21,7 @@
                 foreach (var i in Model)
                 {
                 <tr>
-                    <td>@i.listid</td>
+                    <td>@i.seqno</td>
                     @*<td>@i.listname</td>*@
                     <td>
                         <a href="/ProspectViewList/Index?listid=@i.listid&lstname=@i.listname">@i.listname</a>
@@ -31,7 +31,7 @@
                     @if (User.IsInRole("Admin"))
                     {
                     <td>
-                        <a class="btn Edit" onclick="showpopupedit('@i.listname','@i.listid','@i.restricted')" href="javascript:void(0)"><i class="fa fa-pencil-square-o"></i></a>
+                        <a class="btn Edit" onclick="showpopupedit('@i.listname','@i.listid','@i.restricted', '@i.seqno')" href="javascript:void(0)"><i class="fa fa-pencil-square-o"></i></a>
                         <a href="/ManageRoles/Delete_Role?RoleName=@i.listname" class="btn Delete" onclick='return confirm("Are you sure you wish to delete this Prospect?");'><i class="fa fa-trash-o"></i></a>
                         @*<a class="btn MoveList" onclick="showpopup_Move('@i.listid', '@i.listname')" href="javascript:void(0)" title="Move list's companies and their contacts with notes to another list"><i class="fa fa-exchange"></i></a>*@
                     </td>

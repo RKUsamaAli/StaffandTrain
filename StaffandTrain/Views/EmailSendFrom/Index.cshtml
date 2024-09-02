@@ -218,12 +218,16 @@
     var editor = CKEDITOR.replace('CKEditorContent', {
         toolbar: [
             {
-                name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Image', 'Link', 'Table', 'HorizontalRule',
+                name: 'basicstyles', items: [
+                    'Bold', 'Italic', 'Underline', 'TextColor', 'RemoveFormat', 'Image', 'Link', 'Table', 'HorizontalRule',
                     'NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter',
-                    'JustifyRight', 'JustifyBlock', 'Maximize', 'Format', 'Font', 'FontSize']
+                    'JustifyRight', 'JustifyBlock', 'Maximize', 'Format', 'Font', 'FontSize'
+                ]
             }
         ],
+        extraPlugins: 'colorbutton'
     });
+
     var css = `
     <style>
         .email-preview {font-family:'Roboto', sans-serif !important; color: #2f2f2f !imporatnt;}

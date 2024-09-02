@@ -26,7 +26,14 @@ namespace StaffandTrain.Controllers
                     ViewBag.message = TempData["Message"];
                 }
                 ProspectList = context.SPGetProspectlist().ToList();
-
+                foreach (var prospect in ProspectList)
+                {
+                    double doubleValue;
+                    if (double.TryParse(String.Format("{0:0.#####}", prospect.seqno), out doubleValue))
+                    {
+                        prospect.seqno = doubleValue;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -39,7 +46,7 @@ namespace StaffandTrain.Controllers
             return View(ProspectList);
         }
 
-        public JsonResult Save_List(string ListName, string restricted)
+        public JsonResult Save_List(string ListName, string restricted, float? seqno)
         {
             string str = "";
             if (Request.IsAuthenticated)
@@ -58,7 +65,7 @@ namespace StaffandTrain.Controllers
                     var countlst = context.Prospecting_Lists.Where(x => x.listname == ListName).Count();
                     if (countlst == 0)
                     {
-                        context.SPInsertProspectlist(ListName, res, null);
+                        context.SPInsertProspectlist(ListName, res, null, seqno);
                         context.SaveChanges();
                         str = "Success";
                     }
@@ -89,7 +96,14 @@ namespace StaffandTrain.Controllers
             try
             {
                 ProspectList = context.SPGetProspectlist().ToList();//.OrderByDescending(x => x.listid).ToList();
-
+                foreach (var prospect in ProspectList)
+                {
+                    double doubleValue;
+                    if (double.TryParse(String.Format("{0:0.#####}", prospect.seqno), out doubleValue))
+                    {
+                        prospect.seqno = doubleValue;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -98,7 +112,7 @@ namespace StaffandTrain.Controllers
             return View(ProspectList);
         }
 
-        public JsonResult Update_List(string ListName, string restricted, int Listid)
+        public JsonResult Update_List(string ListName, string restricted, int Listid, float? seqno)
         {
             string str = "";
             if (Request.IsAuthenticated)
@@ -117,7 +131,7 @@ namespace StaffandTrain.Controllers
                     var countlst = context.Prospecting_Lists.Where(x => x.listname == ListName && Listid != Listid).Count();
                     if (countlst == 0)
                     {
-                        context.SPUpdateProspectList(ListName, res, Listid);
+                        context.SPUpdateProspectList(ListName, res, Listid, seqno);
                         context.SaveChanges();
                         str = "Success";
                     }

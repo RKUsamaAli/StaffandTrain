@@ -71,7 +71,7 @@
                 </ul>
             </div>
         </div>
-    </div> 
+    </div>
     <header class="header">
         <div class="container">
             @*<div class="logo"><img src="~/images/logo.png" alt="" /></div>*@
@@ -105,8 +105,8 @@
                     }
                 </ul>
             </div>
-        </div> 
-    </header> 
+        </div>
+    </header>
     <div class="banner">
         <img src="~/images/banner.jpg" alt="" />
         <div class="banner-caption">
@@ -115,12 +115,12 @@
                     <div class="container">
 
                     </div>
-                </div> 
+                </div>
                 <!--end Table-cell-->
             </div>
             <!--end Table-->
         </div>
-    </div> 
+    </div>
 
     <div class="container main-ctn">
         @RenderBody()
@@ -165,28 +165,53 @@
     @*<script src="~/Scripts/jquery.min.js"></script>
         <script src="~/Scripts/bootstrap.js"></script>*@
     @*<script src="~/Scripts/owl.carousel.js"></script>
-    <script src="~/Scripts/custom.js" defer></script>*@
+        <script src="~/Scripts/custom.js" defer></script>*@
     <script src="~/Custom_JS/Layout_JS.js" defer></script>
     @*<script type="text/javascript">
 
-        $(document).ready(function () {
-            if (location.pathname.split("/")[1] != "") {
+            $(document).ready(function () {
+                if (location.pathname.split("/")[1] != "") {
 
-                $('.navi a[href^="' + location.pathname + '"]').parent().addClass('active');
-                $('.navupper a[href^="' + location.pathname + '"]').parent().addClass('active');
+                    $('.navi a[href^="' + location.pathname + '"]').parent().addClass('active');
+                    $('.navupper a[href^="' + location.pathname + '"]').parent().addClass('active');
 
 
-            }
-            else {
-                $('.navi a[href^="/UserHome/Index"]').parent().addClass('active');
+                }
+                else {
+                    $('.navi a[href^="/UserHome/Index"]').parent().addClass('active');
 
-            }
+                }
 
-        });
-    </script>*@
+            });
+        </script>*@
     @*@Styles.RenderFormat("<script type=\"text/javascript\">load_css_async('{0}')</script>", "~/Content/filecss")*@
 
+    <script>
+        // Function to store scroll position in local storage
+        function saveScrollPosition() {
+            const currentPageUrl = window.location.pathname;
+            localStorage.setItem(currentPageUrl + '-scrollX', window.scrollX);
+            localStorage.setItem(currentPageUrl + '-scrollY', window.scrollY);
+        }
 
+        // Function to retrieve and restore scroll position from local storage
+        function restoreScrollPosition() {
+            const currentPageUrl = window.location.pathname;
+            const scrollX = parseInt(localStorage.getItem(currentPageUrl + '-scrollX')) || 0;
+            const scrollY = parseInt(localStorage.getItem(currentPageUrl + '-scrollY')) || 0;
+            window.scrollTo(scrollX, scrollY);
+            localStorage.removeItem(currentPageUrl + '-scrollX');
+            localStorage.removeItem(currentPageUrl + '-scrollY');
+        }
+
+        // Capture current scroll position before page unload
+        window.addEventListener('beforeunload', saveScrollPosition);
+
+        // Restore scroll position on page load
+        window.onload = function () {
+            restoreScrollPosition();
+        };
+    </script>
 </body>
 </html>
 

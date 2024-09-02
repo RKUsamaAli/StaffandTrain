@@ -29,7 +29,7 @@ $(function () {
 			['style', ['bold', 'italic', 'underline', 'clear']],
 			['fontsize', ['fontsize']],
 			//['fontname', ['fontname']],
-			//['color', ['color']],
+			['color', ['color']],
 			['height', ['height']],
 			['table', ['table']],
 			['insert', ['link', 'picture', 'hr']],

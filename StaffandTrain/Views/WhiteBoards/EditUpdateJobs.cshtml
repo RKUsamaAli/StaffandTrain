@@ -9,13 +9,31 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" defer></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js" defer></script>
-<script src="~/Custom_JS/WhiteBoard_EditUpdateJobs_v1.js" defer></script>
+<script src="~/Custom_JS/WhiteBoard_EditUpdateJobs_v1.js?v=2" defer></script>
 <style type="text/css">
     p, pre {
         margin: 0 !important;
     }
     u {
         text-decoration:underline !important;
+    }
+    .btn-group.open .dropdown-toggle {
+        box-shadow: none;
+    }
+    .note-color .dropdown-toggle {
+        height: 30px;
+    }
+    .note-color .dropdown-toggle::after {
+        content: "";
+        position: absolute;
+        top: 43%;
+        right: 12px;
+        transform: translateY(-50%);
+        border: solid #7a7a7a;
+        border-width: 0 1px 1px 0;
+        padding: 3px;
+        transform: rotate(45deg) translateY(-50%);
+        pointer-events: none;
     }
 </style>
 <div class="container main-ctn">

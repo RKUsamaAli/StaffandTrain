@@ -19,5 +19,6 @@ namespace StaffandTrain.DataModel
         public Nullable<byte> restricted { get; set; }
         public Nullable<System.Guid> listguid { get; set; }
         public string Userid { get; set; }
+        public Nullable<double> seqno { get; set; }
     }
 }

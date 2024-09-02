@@ -18,5 +18,6 @@ namespace StaffandTrain.DataModel
         public Nullable<int> Cnt { get; set; }
         public Nullable<int> contactCount { get; set; }
         public Nullable<byte> restricted { get; set; }
+        public Nullable<double> seqno { get; set; }
     }
 }

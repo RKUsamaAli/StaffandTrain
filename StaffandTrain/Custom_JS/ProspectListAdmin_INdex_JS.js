@@ -19,12 +19,13 @@ $(document).ready(function () {
             return false;
         }
         var ListName = $("#txtlistname").val();
+        var seqNo = $("#txtseqno").val();
         var restricted = $('input[name=Restricted]:checked').val();
 
         $.ajax({
             type: "POST",
             url: "/ProspectListsAdmin/Save_List",
-            data: { ListName: ListName, restricted: restricted },
+            data: { ListName: ListName, restricted: restricted, seqNo },
             dataType: 'json',
             success: function (msg) {
 
@@ -66,12 +67,13 @@ $(document).ready(function () {
         }
 
         var ListName = $("#txtlistname").val();
+        var seqNo = $("#txtseqno").val();
         var restricted = $('input[name=Restricted]:checked').val()
         var Listid = $("#hdnlistid").val();
         $.ajax({
             type: "POST",
             url: "/ProspectListsAdmin/Update_List",
-            data: { ListName: ListName, restricted: restricted, Listid: Listid },
+            data: { ListName: ListName, restricted: restricted, Listid: Listid, seqNo },
             dataType: 'json',
 
 
@@ -125,11 +127,12 @@ function showpopup() {
     $('#FileManageModal').modal('show');
 }
 
-function showpopupedit(lsitname, listid, restricted) {
+function showpopupedit(lsitname, listid, restricted, seqno) {
     $(".alert").hide();
     $(".validateTips").text("");
     $("#myModalLabel").text("Update Prospect");
     $("#txtlistname").val(lsitname);
+    $("#txtseqno").val(seqno);
     $("#divcreaterole").hide();
     $("#divUpdaterole").show();
     $("#hdnlistid").val(listid);

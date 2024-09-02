@@ -95,16 +95,17 @@
 </div>
 <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace('CKEditorContent', {
+    var editor = CKEDITOR.replace('CKEditorContent', {
         toolbar: [
             {
-                name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Image', 'Link', 'Table', 'HorizontalRule',
+                name: 'basicstyles', items: [
+                    'Bold', 'Italic', 'Underline', 'TextColor', 'RemoveFormat', 'Image', 'Link', 'Table', 'HorizontalRule',
                     'NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter',
-                    'JustifyRight', 'JustifyBlock', 'Maximize', 'Format', 'Font', 'FontSize']
+                    'JustifyRight', 'JustifyBlock', 'Maximize', 'Format', 'Font', 'FontSize'
+                ]
             }
         ],
-
-
+        extraPlugins: 'colorbutton'
     });
 </script>
 <style>

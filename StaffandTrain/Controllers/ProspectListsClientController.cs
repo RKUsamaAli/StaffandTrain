@@ -37,7 +37,7 @@ namespace StaffandTrain.Controllers
             return View(listdata);
         }
 
-        public JsonResult Save_List(string ListName, string restricted)
+        public JsonResult Save_List(string ListName, string restricted, float? seqno)
         {
             string str = "";
             try
@@ -55,7 +55,7 @@ namespace StaffandTrain.Controllers
                 var username = User.Identity.Name;
                 if (countlst == 0)
                 {
-                    context.SPInsertProspectlist(ListName, res, username);
+                    context.SPInsertProspectlist(ListName, res, username, seqno);
                     context.SaveChanges();
                     str = "Success";
                 }
@@ -75,7 +75,7 @@ namespace StaffandTrain.Controllers
         }
 
 
-        public JsonResult Update_List(string ListName, string restricted, int Listid)
+        public JsonResult Update_List(string ListName, string restricted, int Listid, float? seqno)
         {
             string str = "";
             try
@@ -92,7 +92,7 @@ namespace StaffandTrain.Controllers
                 var countlst = context.Prospecting_Lists.Where(x => x.listname == ListName && Listid != Listid).Count();
                 if (countlst == 0)
                 {
-                    context.SPUpdateProspectList(ListName, res, Listid);
+                    context.SPUpdateProspectList(ListName, res, Listid, seqno);
                     context.SaveChanges();
                     str = "Success";
                 }

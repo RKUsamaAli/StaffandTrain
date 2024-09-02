@@ -2028,7 +2028,7 @@ namespace StaffandTrain.DataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SpInsertEmailTemplate", templateNameParameter, subjectParameter, groupingNumberParameter, emailBodyParameter);
         }
     
-        public virtual int SPInsertProspectlist(string listname, Nullable<byte> restricted, string userid)
+        public virtual int SPInsertProspectlist(string listname, Nullable<byte> restricted, string userid, Nullable<double> seqno)
         {
             var listnameParameter = listname != null ?
                 new ObjectParameter("listname", listname) :
@@ -2042,7 +2042,11 @@ namespace StaffandTrain.DataModel
                 new ObjectParameter("Userid", userid) :
                 new ObjectParameter("Userid", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPInsertProspectlist", listnameParameter, restrictedParameter, useridParameter);
+            var seqnoParameter = seqno.HasValue ?
+                new ObjectParameter("seqno", seqno) :
+                new ObjectParameter("seqno", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPInsertProspectlist", listnameParameter, restrictedParameter, useridParameter, seqnoParameter);
         }
     
         public virtual int SpInsertUserPRos(string userId, string listid)
@@ -2306,7 +2310,7 @@ namespace StaffandTrain.DataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Spupdatejob", jobtitleParameter, jobdescrParameter, submittalsParameter, jobidParameter, rowNumberParameter);
         }
     
-        public virtual int SPUpdateProspectList(string listname, Nullable<byte> restricted, Nullable<int> listid)
+        public virtual int SPUpdateProspectList(string listname, Nullable<byte> restricted, Nullable<int> listid, Nullable<double> seqno)
         {
             var listnameParameter = listname != null ?
                 new ObjectParameter("listname", listname) :
@@ -2320,7 +2324,11 @@ namespace StaffandTrain.DataModel
                 new ObjectParameter("listid", listid) :
                 new ObjectParameter("listid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPUpdateProspectList", listnameParameter, restrictedParameter, listidParameter);
+            var seqnoParameter = seqno.HasValue ?
+                new ObjectParameter("seqno", seqno) :
+                new ObjectParameter("seqno", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPUpdateProspectList", listnameParameter, restrictedParameter, listidParameter, seqnoParameter);
         }
     
         public virtual int SpUpdateUserPRos(string userId, string listid)

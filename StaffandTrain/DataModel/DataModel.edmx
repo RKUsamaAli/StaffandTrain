@@ -330,7 +330,7 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.locations' does n
         <EntityType Name="Logs">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Status" />
+<PropertyRef Name="Status" />
             <PropertyRef Name="Type" />
             <PropertyRef Name="Description" />
             <PropertyRef Name="CreateAt" />
@@ -654,6 +654,7 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.OpenJobs9' does n
           <Property Name="restricted" Type="tinyint" />
           <Property Name="listguid" Type="uniqueidentifier" />
           <Property Name="Userid" Type="nvarchar" MaxLength="150" />
+          <Property Name="seqno" Type="float" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.Resumes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1763,6 +1764,7 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.vw_aspnet_WebPart
           <Parameter Name="listname" Type="nvarchar" Mode="In" />
           <Parameter Name="restricted" Type="tinyint" Mode="In" />
           <Parameter Name="Userid" Type="nvarchar" Mode="In" />
+          <Parameter Name="seqno" Type="float" Mode="In" />
         </Function>
         <Function Name="SpInsertUserPRos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserId" Type="nvarchar" Mode="In" />
@@ -1840,6 +1842,7 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.vw_aspnet_WebPart
           <Parameter Name="listname" Type="nvarchar" Mode="In" />
           <Parameter Name="restricted" Type="tinyint" Mode="In" />
           <Parameter Name="listid" Type="int" Mode="In" />
+          <Parameter Name="seqno" Type="float" Mode="In" />
         </Function>
         <Function Name="SpUpdateUserPRos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserId" Type="nvarchar" Mode="In" />
@@ -2393,7 +2396,7 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.vw_aspnet_WebPart
           <EntitySet Name="Companies_ListDeleted" EntityType="Staffandtrain_NewModel.Companies_ListDeleted" />
           <EntitySet Name="Contacts" EntityType="Staffandtrain_NewModel.Contact" />
           <EntitySet Name="EmailTemplates" EntityType="Staffandtrain_NewModel.EmailTemplate" />
-          <EntitySet Name="Prospecting_Lists" EntityType="Staffandtrain_NewModel.Prospecting_Lists" />
+<EntitySet Name="Prospecting_Lists" EntityType="Staffandtrain_NewModel.Prospecting_Lists" />
           <EntitySet Name="Subscribers" EntityType="Staffandtrain_NewModel.Subscriber" />
           <EntitySet Name="TitleStandards" EntityType="Staffandtrain_NewModel.TitleStandard" />
           <EntitySet Name="Trackings" EntityType="Staffandtrain_NewModel.Tracking" />
@@ -3058,6 +3061,7 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.vw_aspnet_WebPart
             <Parameter Name="listname" Mode="In" Type="String" />
             <Parameter Name="restricted" Mode="In" Type="Byte" />
             <Parameter Name="Userid" Mode="In" Type="String" />
+            <Parameter Name="seqno" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="SpInsertUserPRos">
             <Parameter Name="UserId" Mode="In" Type="String" />
@@ -3135,6 +3139,7 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.vw_aspnet_WebPart
             <Parameter Name="listname" Mode="In" Type="String" />
             <Parameter Name="restricted" Mode="In" Type="Byte" />
             <Parameter Name="listid" Mode="In" Type="Int32" />
+            <Parameter Name="seqno" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="SpUpdateUserPRos">
             <Parameter Name="UserId" Mode="In" Type="String" />
@@ -3328,7 +3333,7 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.vw_aspnet_WebPart
           </FunctionImport>
           <FunctionImport Name="SPgetemailtemplat_GroupinngAdded" ReturnType="Collection(Staffandtrain_NewModel.SpGetEmailtemplatelist_Result)" />
           <FunctionImport Name="SPgetemailtemplatebytemplateid_GroupingAdded" ReturnType="Collection(Staffandtrain_NewModel.SPgetemailtemplatebytemplateid_Result)">
-            <Parameter Name="TemplateId" Mode="In" Type="Int32" />
+          <Parameter Name="TemplateId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="aspnet_Applications">
@@ -3589,7 +3594,7 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.vw_aspnet_WebPart
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="GroupingNumber" Type="Int32" />
         </EntityType>
-        <EntityType Name="Prospecting_Lists">
+<EntityType Name="Prospecting_Lists">
           <Key>
             <PropertyRef Name="listid" />
           </Key>
@@ -3598,6 +3603,7 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.vw_aspnet_WebPart
           <Property Name="restricted" Type="Byte" />
           <Property Name="listguid" Type="Guid" />
           <Property Name="Userid" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="seqno" Type="Double" />
         </EntityType>
         <EntityType Name="Subscriber">
           <Key>
@@ -4642,6 +4648,7 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.vw_aspnet_WebPart
           <Property Type="Int32" Name="Cnt" Nullable="true" />
           <Property Type="Int32" Name="contactCount" Nullable="true" />
           <Property Type="Byte" Name="restricted" Nullable="true" />
+          <Property Type="Double" Name="seqno" Nullable="true" />
         </ComplexType>
         <ComplexType Name="SPGetProspectlistTest_Result">
           <Property Type="Int64" Name="RowNumber" Nullable="true" />
@@ -5181,9 +5188,10 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.vw_aspnet_WebPart
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Prospecting_Lists">
+<EntitySetMapping Name="Prospecting_Lists">
             <EntityTypeMapping TypeName="Staffandtrain_NewModel.Prospecting_Lists">
               <MappingFragment StoreEntitySet="Prospecting_Lists">
+                <ScalarProperty Name="seqno" ColumnName="seqno" />
                 <ScalarProperty Name="Userid" ColumnName="Userid" />
                 <ScalarProperty Name="listguid" ColumnName="listguid" />
                 <ScalarProperty Name="restricted" ColumnName="restricted" />
@@ -6299,6 +6307,7 @@ warning 6002: The table/view 'SQL2017_1013691_customerlist.dbo.vw_aspnet_WebPart
                 <ScalarProperty Name="Cnt" ColumnName="Cnt" />
                 <ScalarProperty Name="contactCount" ColumnName="contactCount" />
                 <ScalarProperty Name="restricted" ColumnName="restricted" />
+                <ScalarProperty Name="seqno" ColumnName="seqno" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -897,6 +897,10 @@ tr.con-recent td {
     background-color: #fce36f !important;
 }
 
+.Str_orange {
+    background-color: #FBA277 !important;
+}
+
 .Str_green {
     background-color: lightgreen !important;
 }
@@ -922,6 +926,10 @@ tr.Str_yellow td {
     background-color: #fce36f !important;
 }
 
+tr.Str_orange td {
+    background-color: #FBA277 !important;
+}
+
 tr.Str_green td {
     background-color: lightgreen !important;
 }
@@ -929,18 +937,21 @@ tr.Str_cyan td {
     background-color: #9ac2db !important;
 }
 
+#cke_notifications_area_CKEditorContent {
+    display: none;
+}
 
 .loading {
-  position: fixed;
-  z-index: 999;
-  height: 2em;
-  width: 2em;
-  overflow: show;
-  margin: auto;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 
 
