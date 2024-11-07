@@ -97,7 +97,7 @@ namespace StaffandTrain.Common
         public void SendSMTPEmail(string recipientEmail, string subject, string body)
         {
             // Email parameters
-            if (!bool.Parse(ConfigurationManager.AppSettings["ActiveEmailSender"])) return;
+            // if (!bool.Parse(ConfigurationManager.AppSettings["ActiveEmailSender"])) return;
 
             string senderEmail = ConfigurationManager.AppSettings["EmailSender"];
             string senderPassword = ConfigurationManager.AppSettings["EmailSenderPassword"];

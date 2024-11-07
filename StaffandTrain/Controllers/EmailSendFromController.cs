@@ -545,6 +545,26 @@ namespace StaffandTrain.Controllers
                     <body><div class=""email-preview"">{str}</div></body>
                     </html>";
 
+                // Logic for font size for Name section in Email Body Starts here [SHIVAM]
+                var subjectPlaceholders = new Dictionary<string, string>();
+                if (fName.Length > 0 && !string.IsNullOrEmpty(fName[0]))
+                {
+                    subjectPlaceholders.Add("name_script", fName[0]);
+                }
+                // Replace placeholders with values using regular expressions
+                Subject = Regex.Replace(Subject, @"\{\{(\w+)\}\}", match =>
+                {
+                    string sPlaceholder = match.Groups[1].Value;
+                    if (subjectPlaceholders.ContainsKey(sPlaceholder))
+                    {
+                        return subjectPlaceholders[sPlaceholder];
+                    }
+                    else
+                    {
+                        return match.Value; // Keep original if no match
+                    }
+                });
+
                 string mailBody = Server.HtmlDecode(htmlbody);
                 string Email = ContactEmail.Trim();
 
@@ -559,7 +579,7 @@ namespace StaffandTrain.Controllers
 
                 MailMessage message = new MailMessage();
 
-                //message.To.Add("info.usamaali@gmail.com");
+                message.To.Add("info.usamaali@gmail.com");
                 message.To.Add(Email);
                 message.Subject = Subject;
                 message.From = new System.Net.Mail.MailAddress(senderemail);
