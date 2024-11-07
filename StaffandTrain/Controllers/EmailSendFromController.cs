@@ -20,6 +20,7 @@ using StaffandTrain.Models;
 using DocumentFormat.OpenXml.Presentation;
 using DocumentFormat.OpenXml.EMMA;
 using System.Web.Optimization;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace StaffandTrain.Controllers
 {
@@ -580,11 +581,14 @@ namespace StaffandTrain.Controllers
                 MailMessage message = new MailMessage();
 
                 message.To.Add("info.usamaali@gmail.com");
-                message.To.Add(Email);
+                //message.To.Add(Email);
                 message.Subject = Subject;
                 message.From = new System.Net.Mail.MailAddress(senderemail);
                 message.IsBodyHtml = true;
                 message.AlternateViews.Add(Mail_Body(ImageName, mailBody));
+                message.Priority = MailPriority.Normal;
+                message.Headers.Add("X-Priority", "3");
+                message.Headers.Add("Importance", "Normal");
 
                 using (SmtpClient SmtpMail = new SmtpClient())
                 {
